@@ -59,13 +59,13 @@ def main():
                 continue
             else:
                 break
-        except ValueError as v:
-            print(f'Você não digitou um número válido')
+        except ValueError:
+            print(f'\n\nVocê não digitou um número válido\n')
         except KeyboardInterrupt:
-            print("Usuário desconectou pelo teclado")
+            print("\n\nUsuário desconectou pelo teclado\n")
             break
 
-    #realizar as contas
+    #Checagem
     try:
 
         if confere(cpf):
