@@ -1,4 +1,5 @@
 def confere(cpf:list) -> bool:
+    '''Recebe uma lista contendo os números do CPF e retorna um booleano indicando se o CPF é válido'''
     cpf_c = cpf[0:9]
     #levantando o primeiro dígito verificador
     somador = 0
@@ -30,6 +31,7 @@ def confere(cpf:list) -> bool:
         return False
 
 def mostra_cpf(cpf:list) -> str:
+    '''Recebe uma lista de números do CPF digitado e retorna uma string com o CPF formatado'''
     concat = ''
     contador = 1
     for x in cpf:
@@ -45,12 +47,14 @@ def mostra_cpf(cpf:list) -> str:
     return concat
 
 
-
 def main():
     while True:
         try:
+            #Solicitando o CPF ao usuário
             cpf = input('Digite o CPF (sem "." e e sem "-") --> ')
+            #transformando a string em uma lista de inteiros
             cpf = [int(x) for x in cpf]
+            #checando se o CPF tem 11 dígitos
             if len(cpf) > 11:
                 print('\nVocê colocou números demais, revise\n')
                 continue
@@ -65,15 +69,12 @@ def main():
             print("\n\nUsuário desconectou pelo teclado\n")
             break
 
-    #Checagem
+    #informando se o CPF é válido ou não
     try:
-
         if confere(cpf):
                 print(f'O CPF --> {mostra_cpf(cpf)} é VÁLIDO.')
         else:
             print(f'O CPF --> {mostra_cpf(cpf)} NÃO é válido')
-        #informar o resultado
-
     except:
         pass
 
