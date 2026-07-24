@@ -1,5 +1,6 @@
-def confere(cpf:list):
+def confere(cpf:list) -> bool:
     cpf_c = cpf[0:9]
+    #levantando o primeiro dígito verificador
     somador = 0
     contador = 10
     for n in cpf_c:
@@ -11,6 +12,7 @@ def confere(cpf:list):
     else:
         cpf_c.append(11 - resto)
     
+    #levantando o segundo dígito verificador
     somador = 0
     contador = 11
     for n in cpf_c:
@@ -21,13 +23,13 @@ def confere(cpf:list):
         cpf_c.append(0)
     else:
         cpf_c.append(11 - resto)
-    
+    #com parando o CPF original com o montado dentro da função
     if cpf == cpf_c:
         return True
     else:
         return False
 
-def mostra_cpf(cpf:list):
+def mostra_cpf(cpf:list) -> str:
     concat = ''
     contador = 1
     for x in cpf:
@@ -44,45 +46,36 @@ def mostra_cpf(cpf:list):
 
 
 
-
-
-
-while True:
-    try:
-        cpf = input('Digite o CPF (sem "." e e sem "-") --> ')
-        cpf = [int(x) for x in cpf]
-        if len(cpf) > 11:
-            print('Você colocou números demais, revise')
-            continue
-        elif len(cpf) < 11:
-            print('Está faltando números, confira novamente')
-            continue
-        else:
+def main():
+    while True:
+        try:
+            cpf = input('Digite o CPF (sem "." e e sem "-") --> ')
+            cpf = [int(x) for x in cpf]
+            if len(cpf) > 11:
+                print('Você colocou números demais, revise')
+                continue
+            elif len(cpf) < 11:
+                print('Está faltando números, confira novamente')
+                continue
+            else:
+                break
+        except ValueError as v:
+            print(f'Você não digitou um número válido')
+        except KeyboardInterrupt:
+            print("Usuário desconectou pelo teclado")
             break
-    except ValueError as v:
-        print(f'Você não digitou um número válido')
-    except KeyboardInterrupt:
-        print("Usuário desconectou pelo teclado")
-        break
 
-#realizar as contas
-try:
+    #realizar as contas
+    try:
 
-    if confere(cpf):
-            print(f'O CPF --> {mostra_cpf(cpf)} é VÁLIDO.')
-    else:
-        print(f'O CPF --> {mostra_cpf(cpf)} NÃO é válido')
-    #informar o resultado
+        if confere(cpf):
+                print(f'O CPF --> {mostra_cpf(cpf)} é VÁLIDO.')
+        else:
+            print(f'O CPF --> {mostra_cpf(cpf)} NÃO é válido')
+        #informar o resultado
 
-except:
-    pass
+    except:
+        pass
 
-
-
-
-
-
-cpf = '95120483020'
-cpf = [int(x) for x in cpf]
-cpf = cpf[0:9]
-# print(len(cpf))
+if __name__ == '__main__':
+    main()
