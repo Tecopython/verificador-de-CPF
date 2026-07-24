@@ -23,7 +23,7 @@ def confere(cpf:list) -> bool:
         cpf_c.append(0)
     else:
         cpf_c.append(11 - resto)
-    #com parando o CPF original com o montado dentro da função
+    #comparando o CPF original com o montado dentro da função
     if cpf == cpf_c:
         return True
     else:
@@ -52,10 +52,10 @@ def main():
             cpf = input('Digite o CPF (sem "." e e sem "-") --> ')
             cpf = [int(x) for x in cpf]
             if len(cpf) > 11:
-                print('Você colocou números demais, revise')
+                print('\nVocê colocou números demais, revise\n')
                 continue
             elif len(cpf) < 11:
-                print('Está faltando números, confira novamente')
+                print('\nEstá faltando números, confira novamente\n')
                 continue
             else:
                 break
